@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .keith li{
+            position: relative;
+            display: inline-block;
+            width:70px;
+            text-align: center;
+            font-size: 18px;
+            margin: 0px;
+            padding: 0px;
+
+        }
+        .keith li::after{
+            content: '';
+            position: absolute;
+            top: 0px;
+            bottom:0px;
+            left: 0px;
+            right: 0px;
+            z-index: -1;
+            background: #2175BC;
+            transform: skewX(-25deg);
+        }
+        .keith li:hover::after{   /*先伪类，后伪元素*/
+            background: #2586D7;
+        }
+
+        .trapzoid li{
+            position: relative;
+            display: inline-block;
+            width:70px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 18px;
+            margin: 0px;
+            padding: 0px;
+            margin: -7px;
+        }
+        .trapzoid li::after{
+            content: '';
+            position: absolute;
+            top: 0px;
+            bottom:0px;
+            left: 0px;
+            right: 0px;
+            z-index: -1;
+            background: #2175BC;
+            transform:perspective(0.5em) rotateX(5deg);
+            transform-origin: bottom;
+        }
+        .trapzoid li:hover::after{   /*先伪类，后伪元素*/
+            background: #2586D7;
+        }
+
+        .trapzoidleft li{
+            position: relative;
+            display: inline-block;
+            width:70px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 18px;
+            margin: 0px;
+            padding: 0px;
+            margin: -7px;
+        }
+        .trapzoidleft li::after{
+            content: '';
+            position: absolute;
+            top: 0px;
+            bottom:0px;
+            left: 0px;
+            right: 0px;
+            z-index: -1;
+            background: #2175BC;
+            transform:perspective(0.5em) rotateX(5deg);
+            transform-origin: bottom left;
+        }
+        .trapzoidleft li:hover::after{   /*先伪类，后伪元素*/
+            background: #2586D7;
+        }
+    </style>
+</head>
+<body>
+    <ul class="keith">
+        <li>博客园</li>
+        <li>首页</li>
+        <li>新随笔</li>
+        <li>联系</li>
+        <li>订阅</li>
+        <li>管理</li>
+    </ul>
+
+    <ul class="trapzoid">
+        <li>博客园</li>
+        <li>首页</li>
+        <li>新随笔</li>
+        <li>联系</li>
+        <li>订阅</li>
+        <li>管理</li>
+    </ul>
+
+    <ul class="trapzoidleft">
+        <li>博客园</li>
+        <li>首页</li>
+        <li>新随笔</li>
+        <li>联系</li>
+        <li>订阅</li>
+        <li>管理</li>
+    </ul>
+</body>
+</html>
