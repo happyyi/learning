@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //所有的函数调用都可以理解为 call形式加糖处理
+    //        'use strict'
+        function hello(thing){
+            console.log(this+" says Hello"+thing);
+        }
+        hello.call('jiangnan','world');
+
+        //在理解所有的函数调用的形式只需要对他进行脱糖处理即可
+        hello('world');// es5的严格模式下this 是undefined
+        hello.call(window,'world');
+
+        var person={
+            name:'Brendan Eich',
+            hello:function (thing) {
+                console.log(this.name+ "says Hello "+thing);
+            }
+        }
+        person.hello('world');
+        person.hello.call(person,'world');
+
+        //动态添加成员函数
+        person2 ={name:'Zakas'}
+        person2.hello=hello;
+        person2.hello('world');
+        hello('world');  //因此只有在调用的时候this才会被确定下来
+
+        //bind
+        var bind=function (func,thisValue) {
+            return function(){
+                return func.apply(thisValue,arguments);
+            }
+        }
+        var boundHello=bind(person.hello,person);
+        boundHello("world");
+
+        //当函数嵌套的时候，使用bind是非常有用的，例如事件 ，setTimeout
+        //jquery 中的函数调用都是使用的call绑定到jquery对象上
+    </script>
+</body>
+</html>
