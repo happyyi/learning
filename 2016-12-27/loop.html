@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        const arr=[1,2,3];
+        arr.forEach((data) => {
+            console.log(data);
+        })
+        //为每个项执行一次，而且已经删除的，或者根本没有赋值的项不会被循环
+        //arguments:value index arr
+        const arr2=[];
+        arr2[0]='a';
+        arr2[5]='b';
+        arr2[100]='c';
+        arr2.name='jiangnna';
+        //第一次调用的时候就确定数组了
+        arr2.forEach((value,index,arr)=>{
+            console.log(value,index,arr)
+        });
+
+//        补充：map和reduce
+        //jsperf 可以测试js的执行性能，发现foreach的性能不如for
+
+        const arr3=['a','b','c'];
+        for(let value of arr3){
+            console.log(value);
+        }
+        //引入原因，forEach不可以return和break，就是说停不下来
+        //for-in会遍历自定义属性和原型链，而且遍历的数组元素顺序是随机的
+
+      /*  for-of：
+        1.可以暂停（return break continue）
+        2.支持数组，还支持类数组对象
+        3.也支持字符串
+        4.Map和Set  */
+
+        var arr4=['e','f','g'];
+        const iter=arr[Symbol.iterator]();
+
+        console.log(iter.next());
+        console.log(iter.next());
+        console.log(iter.next());
+        console.log(iter.next());
+
+        //用for的时候只需要注意存一下长度，不要反复去取
+        //for-in循环的开销非常大，如果能用别的循环替代，尽量不去使用for-in
+        //for-in顺序不确定，与任何东西都没有明确的关系
+        //Js中的数组在内存上是不连续的，索引并不是偏移量,其实数组就是一个对象。而for-in只遍历可枚举的属性
+        const err=[1,3,4];
+        err.name='jiangnan';
+        Array.prototype.faterName='father';
+        for(let index in err){
+            console.log(err[index]);
+        }
+
+        //但是for-in在遍历稀疏数组的时候更加有用
+        let key;
+        const xishuArr=[];
+        xishuArr[0]='a';
+        xishuArr[100]='b';
+        xishuArr[10000]='c';
+        function arrayHasOwnIndex(arr,prop){
+            return array.hasOwnProperty(prop) &&
+                /^0$| ^[1-9]\d*$/.test(prop)&&
+                prop<=4294967294;
+        }
+        for(key in xishuArr){
+
+        }
+
+
+    </script>
+</body>
+</html>

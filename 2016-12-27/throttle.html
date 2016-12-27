@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="search1">
+    <input type="text" id="search2">
+    <input type="text" id="search3">
+    <script>
+        function queryData(text) {
+            console.log("搜索:"+text);
+        }
+        var oInput1=document.getElementById('search1');
+        oInput1.addEventListener("keyup",function (event) {
+            queryData(this.value);
+        });
+
+        var oInput2=document.getElementById('search2');
+        oInput2.addEventListener("keyup",function(event){
+            throttle(queryData,null,500,this.value);
+        });
+
+        function throttle(fn,context,delay,text){
+            clearTimeout(fn.timer);
+            fn.timer=setTimeout(function () {
+                fn.call(context,text);
+            },delay)
+        }
+
+        var oInput3=document.getElementById('search3');
+        oInput2.addEventListener("keyup",function(event){
+            throttle2(queryData,null,500,this.value,1000);
+        });
+        function mustApplyTime(fn,context,delay,text,mustApplyTime,) {
+            clearTimeout(fn.timer);
+            fn._cur=Date.now();   //记录当前时间的写法
+            if(!fn._start){
+                fn._start=fn._cur;
+            }
+            if(fn._cur-fn._start>mustApplyTime){
+                fn.call(context,text)
+                fn._start=fn._cur;
+            }else{
+                fn.timer=setTimeout(function () {
+                    fn.call(context,text);
+                },delay)
+            }
+        }
+    </script>
+</body>
+</html>
