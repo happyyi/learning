@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: darkred;
+        }
+        .displaynone{
+            display: none;
+        }
+        .visibility{
+            visibility: hidden;
+        }
+
+        div[hidden]{
+            display: block;
+        }
+
+        .transform{
+            transform: translateX(-100%);
+        }
+        .visuallyhidden{
+            position: absolute;  /*非常有用*/
+            width: 1px;
+            height: 1px;
+            margin:-1px;
+            border: 0;
+            padding: 0;
+            clip: rect(0,0,0,0);
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="displaynone">
+        display:none
+    </div>
+    <div class="visibility">
+        <span>not visible</span>
+        <span style="visibility: visible">visible!</span>
+    </div>
+
+    <div hidden>html hidden</div>  <!--本质上还是通过css-->
+
+    <div aria-hidden="true">aria-hidden</div>
+
+    <div class="transform"></div>
+    <div></div>
+
+    <div class="visuallyhidden">
+        visuallyhidden
+    </div>
+</body>
+</html>
