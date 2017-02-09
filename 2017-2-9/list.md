@@ -3,3 +3,5 @@
 * [取二进制中1的算法题](https://www.h5jun.com/post/counting-bits.html)
 * [object-fit和object-position](http://www.zcfy.cc/article/318)
 * [ES6中的六个漂亮技巧](http://www.zcfy.cc/article/six-nifty-es6-tricks-346.html)
+* [Ballon.css](http://kazzkiq.github.io/balloon.css/)
+* [html5视频](http://yanhaijing.com/html/2016/03/12/html5-video/)
