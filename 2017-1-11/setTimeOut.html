@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" name="" id="text1"><span id="span1"></span><br/>
+<input type="text" name="" id="text2"><span id="span2"></span>
+<script>
+    var start=new Date();
+    setTimeout(function () {
+        console.log(new Date()-start);
+    },500);
+    while (new Date-start<=1000){}
+
+    var oText1=document.getElementById('text1');
+    var oText2=document.getElementById('text2');
+    var oSpan1=document.getElementById('span1');
+    var oSpan2=document.getElementById('span2');
+
+    oText1.onkeydown=function(){
+        oSpan1.innerHTML=oText1.value; //出发keydown的时候字还没有出来
+    }
+    oText2.onkeydown=function(){
+        setTimeout(function () {
+            oSpan2.innerHTML=oText2.value;
+        },0);
+    }
+
+    //三个线程 JavaScript线程，GUI线程（与js线程互斥），事件线程
+    //setTimeOut的第二个参数自后还有参数
+    //setTimeOut 中匿名函数的this指向window
+
+    if(!window.setImmediate){
+        window.setImmediate=function (func,args) {
+            return window.setTimeout(func,0,args)
+        }
+    };
+    window.clearImmediate=window.clearTimeout;
+//只有ie10和node支持
+
+</script>
+</body>
+</html>

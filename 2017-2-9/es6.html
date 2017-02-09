@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<script>
+   //参数缺失的情况下
+    function dealMiss(){
+        throw new Error('Missing parameter');
+    }
+    function foo(mustBeProvided=dealMiss()){
+        return mustBeProvided;
+    }
+    /*foo();*/
+
+    /*判断unicode编码的实际个数*/
+    document.getElementsByTagName('div')[0].innerHTML='x\uD83D\uDE80y'
+    for (const ch of 'x\uD83D\uDE80y') {
+       console.log(ch.length);  //1,2,1
+    }
+    console.log([...'x\uD83D\uDE80y'].length );
+
+    /*交换两个变量的值*/
+    var a=1; var b=2;
+
+    [a,b]=[b,a]
+    console.log(a,b);
+
+    /* */
+</script>
+</body>
+</html>

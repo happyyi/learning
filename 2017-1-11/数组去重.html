@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //首先定义什么叫重复
+       /*
+        0 < NaN;
+        0 > NaN;
+        0 == NaN;
+        0 === NaN;
+        任何比较都是false
+        +0===-0
+        */
+        var a1 = 'a';
+        var a2 = new String('a');
+        var a3 = new String('a');
+        a1 == a2; // true
+        a1 == a3; // true
+        a2 == a3; // false
+        a1 === a2; // false
+        a1 === a3; // false
+        a2 === a3; // false
+        //对象比较任何时候都是不相等的
+        var config1={
+            prop1:1,
+            prop2:2
+        }
+        var config2={
+            prop1:1,
+            prop2:2
+        }
+        console.log(config1==config2);
+        console.log(JSON.stringify(config1)==JSON.stringify(config1));  //用stringify来比较
+        console.log([] == ![]);
+
+        //正则用toString()  日期用getDate()
+
+        var arr=[2,3,4,4,2,125,1000,125,NaN,NaN];
+        function unique1(arr){
+            return arr.filter(function (item,index) {
+                return arr.indexOf(item)===index
+            })
+        }
+        console.log(unique1(arr));
+
+        function unique2(arr) {
+            var ret=[];
+            arr.forEach(function (item) {
+                if(ret.indexOf(item)===-1){
+                    ret.push(item);
+                }
+            })
+            return ret;
+        }
+        console.log(unique2(arr));
+
+        //includes的等于会判定NaN=NaN
+        function unique3(arr) {
+            var ret=[];
+            arr.forEach(function (item) {
+                if(!ret.includes(item)){
+                    ret.push(item);
+                }
+            })
+            return ret;
+        }
+        console.log(unique3(arr));
+    </script>
+</body>
+</html>

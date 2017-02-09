@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function loadCss(option) {
+        var url=option.url,
+        callback = typeof options.callback == "function" ? options.callback :function () {},
+            id=options.id,
+            node=document.createElement('link'),
+            supportOnload= "onload" in node,
+            isOldWebKit=+navigator.userAgent.replace(/.*(?:AppleWebKit|AndroidWebKit)\/?(\d+).*/i, "$1") < 536, // webkit旧内核做特殊处理
+            protectNum=300000;
+
+            node.rel="stylesheet";
+            node.type="text/css";
+            node.href=url;
+            if(typeof id!=="undefined"){
+                node.id=id;
+            }
+            document.getElementsByTagName('head')[0].appendChild(node);
+
+            if(isOldWebKit || !supportOnload){
+                setTimeout(function () {
+                   pollCss(node,callback,0)
+                },1)
+            }
+
+            if(supportOnload){
+                node.onload = onload;
+                node.onerror=function () {
+                    onload();
+                }
+            }else{
+                node.onreadystatechange=function () {
+                    if(/loaded|complete/.test(node.readyState)){
+                        onload();
+                    }
+                }
+            }
+
+            function onload() {
+                node.onload=node.onerror=node.onreadystatechange=null;
+                node =null;
+                callback();
+            }
+            //做的是清除操作
+
+            function pollCss(node,callback,step) {
+                var sheet =node.sheet,
+                    isLoaded;
+
+                step+=1;
+                if(step > protectNum){
+                    isLoaded=true;
+                    node =null;
+                    callback();
+                    return;
+                }
+
+                if(isOldWebKit){
+                    if(sheet){
+                        isLoaded=True;
+                    }
+                }else if(sheet){
+                    try{
+                        if(sheet.cssRules){
+                            isLoaded=true;
+                        }
+                    }catch (ex){
+                        if(ex.name === "NS_ERROR_DOM_SECURITY_ERR"){
+                            isLoaded = true;
+                        }
+                    }
+                }
+                setTimeout(function(){
+                    if(isLoad){
+                        callback();
+                    }else{
+                        pollCss(node,callback,step);
+                    }
+                },20)
+            }
+
+    }
+</script>
+</body>
+</html>
