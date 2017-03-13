@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="">
+        <input type="file" id="uploadFile" name="file" />
+    </form>
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+    <script>
+        $('#uploadFile').on('change',function (e) {
+            var file=this.files[0];
+
+            var formData=new FormData();
+            formData.append('file',file);
+
+            $.ajax({
+                url:'/webgl/upload/zip',
+                type:'psot',
+                data:formData,
+                cache:false,
+                contentType:false,
+                precessData:false,
+                success:function(res){
+                    console.log(res);
+                }
+            })
+
+        })
+    </script>
+</body>
+</html>
