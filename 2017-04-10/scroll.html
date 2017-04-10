@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+    <img src="https://aecpm.alicdn.com/tfscom/TB1.52aPFXXXXa0XXXXXXXXXXXX.jpg">
+    <img src="https://aecpm.alicdn.com/tfscom/TB1_utRPVXXXXapXVXXXXXXXXXX.png">
+    <img src="https://static.dingtalk.com/media/lAHOuOFd_czSzQEn_295_210.gif">
+    <img src="https://aecpm.alicdn.com/tfscom/TB1f1xwQpXXXXXBXVXXXXXXXXXX.jpg">
+    <img src="https://gtms03.alicdn.com/tps/i3/TB1eSxvJVXXXXaKXFXXYoAvIXXX-220-50.png">
+    <img src="https://gw.alicdn.com/bao/uploaded/TB1EGvvPVXXXXX3aXXXXXXXXXXX-200-200.jpg">
+    <img src="https://gw.alicdn.com/tfscom/TB1CLTHNFXXXXaDXpXXXXXXXXXX">
+    <script>
+        const urls = `
+https://asearch.alicdn.com/bao/uploaded/i1/1381306006414474986/TB2_gZAlNtmpuFjSZFqXXbHFpXa_!!0-saturn_solar.jpg
+https://asearch.alicdn.com/bao/uploaded/i1/153360285303496277/TB2SO.Wa4vzQeBjSZFEXXbYEpXa_!!0-saturn_solar.jpg
+https://asearch.alicdn.com/bao/uploaded/i1/188050339412916381/TB2geTXaypnpuFjSZFkXXc4ZpXa_!!0-saturn_solar.jpg
+https://asearch.alicdn.com/bao/uploaded/i2/181720289489216985/TB2UFz6amjz11Bjy0FnXXcnxXXa_!!0-saturn_solar.jpg
+https://asearch.alicdn.com/bao/uploaded/i3/108480250457898935/TB28r5osFXXXXbrXXXXXXXXXXXX_!!0-saturn_solar.jpg
+https://asearch.alicdn.com/bao/uploaded/i3/111180208599309441/TB2kAsQnVXXXXXcXFXXXXXXXXXX_!!0-saturn_solar.jpg
+https://asearch.alicdn.com/bao/uploaded/i3/171530328819399773/TB2rgtke9iK.eBjSZFsXXbxZpXa_!!0-saturn_solar.jpg
+https://asearch.alicdn.com/bao/uploaded/i3/1880505035634435666/TB2bToNiHXlpuFjSszfXXcSGXXa_!!0-saturn_solar.jpg
+https://asearch.alicdn.com/bao/uploaded/i4/1519305020726924733/TB2I2VuhNhmpuFjSZFyXXcLdFXa_!!0-saturn_solar.jpg
+`.split("\n")
+        let i = 0
+        setInterval(() => {
+            if (i === urls.length) i = 0
+            let img = new Image()
+            img.src = urls[i++]
+            document.body.prepend(img)
+        }, 2000)
+        onscroll = function(argument) {
+            console.log("scrollY：" + scrollY)
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
